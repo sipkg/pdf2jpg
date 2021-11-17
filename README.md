@@ -5,7 +5,7 @@ Convert PDF to JPG using the go-fitz Go wrapper for MuPDF fitz library.
 ## Install
 
 ```sh
-go get -u github.com/sipkg/pdf2jpg
+go install github.com/sipkg/pdf2jpg
 ```
 
 ## Usage
