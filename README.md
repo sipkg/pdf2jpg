@@ -22,9 +22,17 @@ pdf2jpg -out test%03d.jpg -qual 1 -in test.pdf
 
 ## FAQ
 
-### How to across-compile from linux to windows
+### How to cross-compile from linux to windows
 
-Because go-fitz library uses https://golang.org/cmd/cgo/, so you need to have compiler and toolchain for arch you want to build for, and also, enable `CGO_ENABLED=1`. 
+You must enable [CGO](https://golang.org/cmd/cgo/) as go-fitz uses it.
+You also need an appropriate compiler and toolchain for the targeted arch. 
+Here, we will use [MinGW-w64](https://www.mingw-w64.org/). 
+See their website for instructions to install it for your distribution.
 
-1. `sudo apt-get install mingw-w64`
-1. `GOOS="windows" GOARCH="amd64" CGO_ENABLED="1" CC="x86_64-w64-mingw32-gcc" go build`
+```sh
+# install MinGW the Debian/Ubuntu way
+sudo apt-get install mingw-w64
+
+# then you can cross-compile
+GOOS="windows" GOARCH="amd64" CGO_ENABLED="1" CC="x86_64-w64-mingw32-gcc" go build
+```
